@@ -59,7 +59,7 @@ class Service(db.Model):
     __tablename__ = 'services'
     service_id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(200), nullable=False)
-    charge = db.Column(db.Decimal(10, 2), nullable=False)
+    charge = db.Column(db.Numeric(10, 2), nullable=False)  # Changed from Decimal to Numeric
     
     # Relationships
     repair_services = db.relationship('RepairService', backref='service', lazy=True)
@@ -71,7 +71,7 @@ class Part(db.Model):
     part_number = db.Column(db.String(50), unique=True, nullable=False)
     description = db.Column(db.String(200), nullable=False)
     quantity_in_stock = db.Column(db.Integer, default=0)
-    cost = db.Column(db.Decimal(10, 2), nullable=False)
+    cost = db.Column(db.Numeric(10, 2), nullable=False)  # Changed from Decimal to Numeric
     
     # Relationships
     service_parts = db.relationship('ServicePart', backref='part', lazy=True)
